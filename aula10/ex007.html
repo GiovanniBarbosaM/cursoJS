@@ -11,23 +11,35 @@
     input {
       font: normal 18pt Arial;
       width: 100px;
+      margin-right: 10px;
+      margin-bottom: 10px;
     }
     div#res {
       margin-top: 20px;
+    }
+    .sr-only {
+      position: absolute;
+      left: -9999px;
     }
   </style>
 </head>
 <body>
   <h1>Somando Valores</h1>
-  <input type="number" name="txtn1" id="txtn1" />
-  <input type="number" name="txtn2" id="txtn2" />
+
+  <label for="txtn1" class="sr-only">Digite o primeiro número</label>
+  <input type="number" name="txtn1" id="txtn1" placeholder="Número 1" />
+
+  <label for="txtn2" class="sr-only">Digite o segundo número</label>
+  <input type="number" name="txtn2" id="txtn2" placeholder="Número 2" />
+
   <input type="button" value="Somar" onclick="somar()" />
+
   <div id="res">Resultado</div>
 
   <script>
     function somar() {
       var tn1 = document.getElementById('txtn1');
-      var tn2 = document.querySelector('input#txtn2');
+      var tn2 = document.getElementById('txtn2');
       var res = document.getElementById('res');
       var n1 = Number(tn1.value);
       var n2 = Number(tn2.value);
