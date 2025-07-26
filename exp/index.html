@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercicio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 class="titulo">Vamos contar</h1>
+
+  <section class="container"> 
+    <div class="conteudo">
+
+      <p>
+        <label for="inicio">Início:</label><br>
+        <input type="number" id="inicio" min="0" placeholder="Digite o valor inicial">
+      </p>
+
+      <p>
+        <label for="fim">Fim:</label><br>
+        <input type="number" id="fim" min="0" placeholder="Digite o valor final">
+      </p>
+
+      <p>
+        <label for="passo">Passo:</label><br>
+        <input type="number" id="passo" min="1" placeholder="Digite o valor do passo">
+      </p>
+
+      <button class="botao" onclick="contar()">Contar</button>
+
+      <p id="resultado">Preparando a contagem...</p>
+    </div>
+  </section>
+
+  <footer class="rodape">©CursoemVídeo</footer>
+
+  <!-- JavaScript -->
+  <script>
+    function contar() {
+      let ini = document.getElementById('inicio').value;
+      let fim = document.getElementById('fim').value;
+      let passo = document.getElementById('passo').value;
+      let res = document.getElementById('resultado');
+
+      if (ini === '' || fim === '' || passo === '') {
+        res.innerHTML = '⚠️ Preencha todos os campos!';
+        return;
+      }
+
+      let i = Number(ini);
+      let f = Number(fim);
+      let p = Number(passo);
+
+      if (p <= 0) {
+        res.innerHTML = '⚠️ Passo inválido! Considerando passo = 1.';
+        p = 1;
+      }
+
+      let contagem = '👉 ';
+      if (i < f) {
+        for (let c = i; c <= f; c += p) {
+          contagem += `${c} 👉 `;
+        }
+      } else {
+        for (let c = i; c >= f; c -= p) {
+          contagem += `${c} 👉 `;
+        }
+      }
+
+      res.innerHTML = contagem + '🏁';
+    }
+  </script>
+</body>
+</html>
